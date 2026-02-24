@@ -1,0 +1,21 @@
+query GetAllRecipes($data: Float!) {
+	getAllRecipes(take: $data) {
+		id
+		imageUrl
+		title
+		description
+		calories
+		cookingTime
+		difficulty
+		slug
+
+		likes {
+			userId
+		}
+
+		views {
+			id
+			userId
+		}
+	}
+}

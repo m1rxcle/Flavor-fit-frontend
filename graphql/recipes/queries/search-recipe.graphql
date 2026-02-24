@@ -1,0 +1,13 @@
+query SearchRecipe($searchTerm: String!) {
+	searchRecipes(searchTerm: $searchTerm) {
+		title
+		slug
+		tag {
+			name
+		}
+		description
+		recipeIngredients {
+			ingredientId
+		}
+	}
+}

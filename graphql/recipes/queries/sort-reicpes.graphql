@@ -1,0 +1,19 @@
+query SortRecipe($sortBy: SortByEnum!) {
+	sortRecipes(sortBy: $sortBy) {
+		id
+		title
+		slug
+		description
+		likes {
+			userId
+		}
+		tag {
+			name
+		}
+		views {
+			userId
+		}
+		createdAt
+		updatedAt
+	}
+}

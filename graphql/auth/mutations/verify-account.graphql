@@ -1,0 +1,3 @@
+mutation Verify($data: ConfirmationInput!) {
+	verifyEmail(data: $data)
+}

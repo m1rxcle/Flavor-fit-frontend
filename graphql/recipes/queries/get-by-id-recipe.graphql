@@ -1,0 +1,18 @@
+query GetByIdRecipe($id: String!) {
+	getRecipeById(id: $id) {
+		id
+		title
+		description
+		difficulty
+		nutritionFact {
+			carbohydrates
+			fats
+			fiber
+		}
+		recipeIngredients {
+			quantity
+			ingredientId
+			unit
+		}
+	}
+}

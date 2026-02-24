@@ -1,0 +1,8 @@
+query GetRecipeFilters {
+	getRecipeFilters {
+		difficulty
+		tag {
+			name
+		}
+	}
+}

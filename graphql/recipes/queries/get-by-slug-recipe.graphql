@@ -1,0 +1,16 @@
+query GetBySlugRecipe($slug: String!) {
+	getRecipeBySlug(slug: $slug) {
+		id
+		title
+		description
+		difficulty
+		likes {
+			id
+			userId
+		}
+		views {
+			id
+			userId
+		}
+	}
+}
