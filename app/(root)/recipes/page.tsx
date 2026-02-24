@@ -1,11 +1,11 @@
 import { Settings } from 'lucide-react'
 import type { Metadata } from 'next'
 
+import { SearchInput } from '@/shared/components/kit/search-input'
 import { CreateRecipeCard } from '@/shared/components/recipes/create-recipe-card'
 import { InlineFiltersList } from '@/shared/components/recipes/inline-filters-list'
 import { RecipeList } from '@/shared/components/recipes/recipe-list'
 import { TotalCreatedRecipes } from '@/shared/components/recipes/total-create-recipes'
-import { SearchInput } from '@/shared/components/search-input'
 import { Card, CardContent } from '@/shared/components/ui/card'
 
 export const metadata: Metadata = {

@@ -16,7 +16,7 @@ import { cn } from '@/shared/lib/utils'
 
 import { ShowPassword } from '@/shared/utils'
 
-import { Button } from '../ui/button'
+import { Button } from '../ui'
 import {
 	Form,
 	FormControl,

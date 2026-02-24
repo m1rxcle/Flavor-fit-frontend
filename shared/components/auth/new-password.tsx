@@ -2,7 +2,7 @@
 
 import { useMutation } from '@apollo/client/react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Loader2, Loader2Icon, Lock } from 'lucide-react'
+import { Loader2Icon, Lock } from 'lucide-react'
 import { useParams, useRouter } from 'next/navigation'
 import React from 'react'
 import { useForm } from 'react-hook-form'
@@ -14,16 +14,16 @@ import { NewPasswordSchema, type TNewPasswordSchema } from '@/shared/schemas'
 
 import { ShowPassword } from '@/shared/utils'
 
-import { Button } from '../ui/button'
 import {
+	Button,
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-	FormMessage
-} from '../ui/form'
-import { Input } from '../ui/input'
+	FormMessage,
+	Input
+} from '../ui'
 
 export const NewPassword = () => {
 	const [showPassword, setShowPassword] = React.useState<boolean>(false)

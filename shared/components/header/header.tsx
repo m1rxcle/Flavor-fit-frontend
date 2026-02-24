@@ -1,7 +1,7 @@
 import { BellIcon, HeadsetIcon } from 'lucide-react'
 
 import { cn } from '../../lib/utils'
-import { ToggleTheme } from '../toggle-theme'
+import { ToggleTheme } from '../kit'
 
 import { HeaderLogo } from './header-logo'
 import { HeaderNavigation } from './header-navigation'

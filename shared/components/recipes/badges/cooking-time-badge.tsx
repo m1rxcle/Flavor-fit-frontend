@@ -3,7 +3,7 @@ import React from 'react'
 
 import { cn } from '@/shared/lib/utils'
 
-import { Badge } from '../../ui/badge'
+import { Badge } from '../../ui'
 
 interface Props {
 	cookingTime: number

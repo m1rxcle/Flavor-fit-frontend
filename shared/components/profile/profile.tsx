@@ -3,13 +3,11 @@
 import { useMutation, useQuery } from '@apollo/client/react'
 import { UserRoundCog } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import React from 'react'
 import { toast } from 'sonner'
 
 import { GetMeDocument, LogOutDocument } from '@/graphql/generated/graphql'
 
-import { Button } from '../ui/button'
-import { Card, CardContent, CardHeader } from '../ui/card'
+import { Button, Card, CardContent, CardHeader } from '../ui'
 
 import { ProfileGeneralInfoForm } from './profile-general-info-form'
 

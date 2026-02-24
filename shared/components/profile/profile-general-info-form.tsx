@@ -3,28 +3,26 @@ import React from 'react'
 
 import type { GetMeQuery } from '@/graphql/generated/graphql'
 
-import { Button } from '../ui/button'
-import { Input } from '../ui/input'
 import {
+	Button,
+	Input,
 	Select,
 	SelectContent,
 	SelectGroup,
 	SelectItem,
 	SelectTrigger,
-	SelectValue
-} from '../ui/select'
-import { Textarea } from '../ui/textarea'
+	SelectValue,
+	Textarea
+} from '../ui'
 
 interface Props {
 	profileData: GetMeQuery | undefined
 	loading: boolean
-	className?: string
 }
 
 export const ProfileGeneralInfoForm: React.FC<Props> = ({
 	profileData,
-	loading,
-	className
+	loading
 }) => {
 	return (
 		<>

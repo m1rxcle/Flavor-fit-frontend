@@ -1,8 +1,7 @@
 import { FilterIcon, SearchIcon } from 'lucide-react'
 
-import { cn } from '../lib/utils'
-
-import { Input } from './ui/input'
+import { cn } from '../../lib/utils'
+import { Input } from '../ui/input'
 
 interface Props {
 	isIcon?: boolean

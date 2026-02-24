@@ -15,16 +15,16 @@ import { RegisterSchema, type TRegisterSchema } from '@/shared/schemas'
 
 import { ShowPassword } from '@/shared/utils'
 
-import { Button } from '../ui/button'
 import {
+	Button,
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-	FormMessage
-} from '../ui/form'
-import { Input } from '../ui/input'
+	FormMessage,
+	Input
+} from '../ui'
 
 import { useAuthStore } from '@/shared/store/auth.store'
 

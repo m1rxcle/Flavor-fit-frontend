@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { SearchInput } from '@/shared/components/search-input'
+import { SearchInput } from '@/shared/components/kit'
 import { Card, CardContent } from '@/shared/components/ui/card'
 
 export const metadata: Metadata = {

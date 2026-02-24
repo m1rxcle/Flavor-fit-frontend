@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 
-import { GoHomeButton } from '@/shared/components/go-home-button'
+import { GoHomeButton } from '@/shared/components/kit'
 import { Card, CardContent } from '@/shared/components/ui/card'
 
 export const metadata: Metadata = {

@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { GetAllRecipesDocument } from '@/graphql/generated/graphql'
 
 import { RecipeCard } from './recipe-card'
-import { RecipeListSkeleton } from './skeletons/recipe-list-skeleton'
+import { RecipeListSkeleton } from './skeletons'
 
 interface Props {
 	limit?: number

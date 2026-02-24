@@ -4,9 +4,8 @@ import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import React from 'react'
 
-import { cn } from '../lib/utils'
-
-import { Button } from './ui/button'
+import { cn } from '../../lib/utils'
+import { Button } from '../ui'
 
 interface Props {
 	className?: string

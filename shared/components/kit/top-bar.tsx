@@ -3,8 +3,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import { NAV_ITEMS } from '../constants'
-import { cn } from '../lib/utils'
+import { NAV_ITEMS } from '../../constants'
+import { cn } from '../../lib/utils'
 
 interface Props {
 	className?: string

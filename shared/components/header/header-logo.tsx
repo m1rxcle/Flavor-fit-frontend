@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { comforter, fredoka } from '@/app/layout'
+import { comforter } from '@/app/layout'
 
 export const HeaderLogo = () => {
 	return (

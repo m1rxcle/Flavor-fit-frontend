@@ -2,8 +2,7 @@ import Image from 'next/image'
 
 import { comforter } from '@/app/layout'
 
-import { Button } from '../ui/button'
-import { Card, CardContent } from '../ui/card'
+import { Button, Card, CardContent } from '../ui'
 
 export const CreateRecipeCard = () => {
 	return (

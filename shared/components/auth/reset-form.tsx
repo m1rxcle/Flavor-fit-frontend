@@ -16,16 +16,16 @@ import {
 	type TResetPasswordSchema
 } from '@/shared/schemas/reset-password-schema'
 
-import { Button } from '../ui/button'
 import {
+	Button,
 	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
-	FormMessage
-} from '../ui/form'
-import { Input } from '../ui/input'
+	FormMessage,
+	Input
+} from '../ui'
 
 export const ResetForm = () => {
 	const [resetPassword, { loading }] = useMutation(ResetPasswordDocument)

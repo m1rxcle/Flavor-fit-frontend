@@ -14,8 +14,7 @@ import {
 
 import { cn } from '@/shared/lib/utils'
 
-import { Field, FieldLabel } from '../ui/field'
-import { InputOTP, InputOTPGroup, InputOTPSlot } from '../ui/input-otp'
+import { Field, FieldLabel, InputOTP, InputOTPGroup, InputOTPSlot } from '../ui'
 
 import { useAuthStore } from '@/shared/store/auth.store'
 
