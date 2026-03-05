@@ -5,6 +5,7 @@ import {
 	ResetForm,
 	VerifyOtp
 } from '../components/auth'
+import { TwoFactorOtp } from '../components/auth/two-factor'
 
 export const AUTH_CONFIG = {
 	login: {
@@ -37,5 +38,11 @@ export const AUTH_CONFIG = {
 		description: 'Придумайте новый пароль для входа в систему',
 		form: NewPassword,
 		showSwitchLink: false
+	},
+	'two-factor': {
+		title: 'Двухфакторная аутентификация',
+		description: 'Придумайте новый пароль для входа в систему',
+		form: TwoFactorOtp,
+		showSwitchLink: true
 	}
 }

@@ -3,6 +3,7 @@
 import { useMutation } from '@apollo/client/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2Icon, Mail, MailOpen } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
@@ -60,6 +61,8 @@ export const ResetForm = () => {
 		}
 	}
 
+	const t = useTranslations('auth.reset')
+
 	return (
 		<Form {...form}>
 			<form
@@ -75,7 +78,7 @@ export const ResetForm = () => {
 								<div className='relative flex items-center'>
 									<MailOpen className='text-muted-foreground absolute left-0 h-6 w-6' />
 									<span className='pl-8 text-lg font-bold'>
-										Ваша почта
+										{t('email-label')}
 									</span>
 								</div>
 							</FormLabel>
@@ -105,7 +108,7 @@ export const ResetForm = () => {
 					{loading ? (
 						<Loader2Icon className='mr-2 size-8 animate-spin' />
 					) : (
-						<span>Подтвердить</span>
+						<span>{t('button-label')}</span>
 					)}
 				</Button>
 			</form>

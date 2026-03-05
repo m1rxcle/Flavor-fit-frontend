@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 export default function NotFound() {
 	return (
 		<section className='relative flex min-h-screen items-center justify-center px-4'>
-			<div className='from-accent/50 via-accent/70 to-accent absolute -z-10 h-full w-full bg-radial dark:bg-radial dark:from-neutral-900 dark:via-neutral-950 dark:to-black' />
-			<Card className='border-primary-/40 bg-accent/10 rounded-4xl border px-4 backdrop-blur-2xl'>
+			<div className='layout-gradient' />
+			<Card className='bg-accent/30 rounded-4xl border border-white/40 px-4 py-10 shadow-2xl backdrop-blur-2xl dark:bg-white/10'>
 				<CardContent className='space-y-2'>
 					<div className='pointer-events-none flex items-center justify-between gap-5 select-none'>
 						<div className='flex flex-col justify-between gap-4'>
@@ -37,7 +37,7 @@ export default function NotFound() {
 						/>
 					</div>
 					<div className='rounded-2x mt-4 h-px bg-white/10' />
-					<GoHomeButton className='hover:bg-button-background/80 mt-10 w-full rounded-4xl p-6 text-2xl font-semibold text-white active:scale-98' />
+					<GoHomeButton className='hover:bg-button-background/80 mt-10 rounded-4xl p-4 font-semibold text-white active:scale-98' />
 				</CardContent>
 			</Card>
 		</section>

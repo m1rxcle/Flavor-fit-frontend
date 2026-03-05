@@ -3,19 +3,8 @@ query GetMe {
 		id
 		email
 		fullName
-		isTwoFactorEnabled
-		isVerified
-		role
 		profile {
-			age
-			bio
-			gender
 			imageUrl
-			sites
-		}
-		measurements {
-			chestCm
-			weightKg
 		}
 	}
 }

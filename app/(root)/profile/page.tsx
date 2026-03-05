@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 
-import { Profile } from '@/shared/components/profile/profile'
+import { ProfileInfo } from '@/shared/components/profile/profile'
 
 export const metadata: Metadata = {
-	title: 'Профиль | Flavor Fit',
-	description: 'Профиль пользователя'
+	title: 'Персональные данные | Flavor Fit',
+	description: 'Персональные данные  пользователя'
 }
 
 export default function Page() {
-	return <Profile />
+	return <ProfileInfo />
 }

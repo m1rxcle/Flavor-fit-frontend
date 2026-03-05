@@ -2,21 +2,19 @@
 
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import React from 'react'
 
 import { cn } from '../../lib/utils'
 import { Button } from '../ui'
 
-interface Props {
-	className?: string
-}
-
-export const ToggleTheme: React.FC<Props> = ({ className }) => {
+export const ToggleTheme = () => {
 	const { setTheme } = useTheme()
 
 	return (
 		<Button
-			className={cn('relative cursor-pointer rounded-2xl', className)}
+			variant='outline'
+			className={cn(
+				'relative cursor-pointer rounded-2xl hover:bg-white/30'
+			)}
 			onClick={() => {
 				if (document.startViewTransition) {
 					document.startViewTransition(() => {

@@ -2,6 +2,7 @@
 
 import { useMutation } from '@apollo/client/react'
 import { REGEXP_ONLY_DIGITS } from 'input-otp'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
@@ -67,7 +68,7 @@ export const VerifyOtp = () => {
 					variables: { data: { token: value } }
 				})
 				toast.success('Вы успешно подтвердили регистрацию!')
-				router.push('/login')
+				router.push('/auth/login')
 			} catch (error) {
 				console.error(error)
 				if (error instanceof Error && error.message) {
@@ -95,10 +96,12 @@ export const VerifyOtp = () => {
 		}
 	}
 
+	const t = useTranslations('auth.verify')
+
 	return (
 		<Field className='w-full'>
 			<FieldLabel htmlFor='digits-only' className='text-lg'>
-				Введите 6-ти значный код который был отправлен на вашу почту
+				{t('label')}
 			</FieldLabel>
 			<InputOTP
 				value={code}
@@ -130,11 +133,11 @@ export const VerifyOtp = () => {
 						'text-base font-bold'
 					)}
 				>
-					Запросить код повторно
+					{t('resend')}
 				</p>
 			) : (
 				<p className='text-muted-foreground text-base font-bold'>
-					Запросить код повторно можно через - {secondsLeft} секунд
+					{t('wait', { secondsLeft })}
 				</p>
 			)}
 
@@ -142,7 +145,7 @@ export const VerifyOtp = () => {
 				href='/register'
 				className='text-foreground mt-4 text-center font-bold hover:underline'
 			>
-				<span>Обратно к регистрации</span>
+				<span>{t('footer')}</span>
 			</Link>
 		</Field>
 	)

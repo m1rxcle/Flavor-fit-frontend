@@ -1,5 +1,6 @@
 'use client'
 
+import { ArrowLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { cn } from '../../lib/utils'
@@ -16,7 +17,8 @@ export const GoHomeButton = ({ className }: { className?: string }) => {
 			)}
 			onClick={() => router.push('/')}
 		>
-			На главную
+			<ArrowLeft className='ml-2' />
+			<span className='text-lg'>На главную</span>
 		</Button>
 	)
 }

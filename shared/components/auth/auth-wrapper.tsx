@@ -1,6 +1,7 @@
 'use client'
 
 import { easeInOut, motion } from 'motion/react'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -21,6 +22,8 @@ interface Props {
 }
 
 export const AuthWrapper: React.FC<Props> = ({ type, className }) => {
+	const t = useTranslations(`auth.${type}`)
+
 	const config = AUTH_CONFIG[type]
 	const FormComponent = config.form
 
@@ -33,7 +36,7 @@ export const AuthWrapper: React.FC<Props> = ({ type, className }) => {
 			)}
 		>
 			<div className='flex items-end justify-center'>
-				<div className='-mr-4 flex flex-col gap-10'>
+				<div className='-mr-4 flex flex-col gap-10 select-none'>
 					{(type === 'login' || type === 'register') && (
 						<AnimatedMaskot
 							url='/images/auth/maskots/1-maskot.png'
@@ -58,7 +61,7 @@ export const AuthWrapper: React.FC<Props> = ({ type, className }) => {
 					exit={{ opacity: 0, y: 0 }}
 					transition={{ duration: 0.5, ease: easeInOut }}
 				>
-					<Card className='shadow-primary/50 relative px-3 py-6 shadow-md'>
+					<Card className='shadow-primary/50 border-primary/20 relative border px-3 py-6 shadow-sm dark:shadow-xs'>
 						<CardContent>
 							<div className='mb-4'>
 								<div className='flex items-center justify-center gap-4'>
@@ -73,11 +76,11 @@ export const AuthWrapper: React.FC<Props> = ({ type, className }) => {
 										/>
 									)}
 									<h1 className='text-primary mb-2 text-center text-4xl font-extrabold italic'>
-										{config.title}
+										{t('title')}
 									</h1>
 								</div>
 								<p className='text-center text-base font-medium'>
-									{config.description}
+									{t('description')}
 								</p>
 							</div>
 							<div className='bg-primary/20 mb-4 h-px w-full' />
@@ -87,28 +90,36 @@ export const AuthWrapper: React.FC<Props> = ({ type, className }) => {
 							<div className='bg-primary/20 mt-4 mb-4 h-px w-full' />
 							{type === 'login' ? (
 								<p className='text-muted-foreground text-center text-base font-medium'>
-									Еще не зарегистрированы?{' '}
-									<Link
-										href='/register'
-										className='text-accent font-bold underline'
-									>
-										<span>Регистрация</span>
-									</Link>
+									{t.rich('footer', {
+										important: chunk => (
+											<Link
+												href='/auth/register'
+												className='text-accent font-bold underline'
+											>
+												<span>{chunk}</span>
+											</Link>
+										)
+									})}
 								</p>
 							) : (
 								(type === 'register' ||
 									type === 'reset' ||
 									type === 'new-password') && (
 									<p className='text-muted-foreground text-center text-base font-medium'>
-										Уже есть аккаунт?{' '}
-										<Link
-											href={
-												isLogin ? '/register' : '/login'
-											}
-											className='text-accent font-bold underline'
-										>
-											<span>Вход</span>
-										</Link>
+										{t.rich('footer', {
+											important: chunk => (
+												<Link
+													href={
+														isLogin
+															? '/auth/register'
+															: '/auth/login'
+													}
+													className='text-accent font-bold underline'
+												>
+													<span>{chunk}</span>
+												</Link>
+											)
+										})}
 									</p>
 								)
 							)}

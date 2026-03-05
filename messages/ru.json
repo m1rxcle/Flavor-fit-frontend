@@ -1,0 +1,62 @@
+{
+	"auth": {
+		"login": {
+			"title": "Приветствуем снова!",
+			"description": "Авторизуйтесь в FlavorFit и продолжите ваше здоровое приключение!",
+			"email-label": "Ваша почта",
+			"password-label": "Ваш пароль",
+			"password-placeholder": "Ваш лучший пароль",
+			"forget-password": "Забыли пароль?",
+			"button-label": "Войти",
+			"footer": "Еще нет аккаунта? <important>Зарегистрироваться</important>"
+		},
+		"register": {
+			"title": "Добро пожаловать!",
+			"description": "Зарегистрируйтесь в FlavorFit и начните путь к здоровому питанию!",
+			"email-label": "Ваша почта",
+			"password-label": "Ваш пароль",
+			"password-placeholder": "Ваш лучший пароль",
+			"fullName-label": "Ваше имя",
+			"repeat-password-label": "Повторите пароль",
+			"button-label": "Зарегистрироваться",
+			"footer": "Уже есть аккаунт? <important>Войти</important>"
+		},
+		"verify": {
+			"title": "Подтверждение почты",
+			"description": "Проверьте свою почту и введите код подтверждения.",
+			"label": "Введите 6-ти значный код который был отправлен на вашу почту",
+			"resend": "Запросить новый код",
+			"wait": "Запросить код повторно можно через - {secondsLeft} секунд",
+
+			"footer": "Обратно к регистрации"
+		},
+		"reset": {
+			"title": "Восстановление пароля",
+			"description": "Введите вашу почту для восстановления пароля.",
+			"email-label": "Ваша почта",
+			"button-label": "Подтвердить",
+
+			"footer": "Уже есть аккаунт? <important>Войти</important>"
+		},
+		"new-password": {
+			"title": "Создание нового пароля",
+			"description": "Создайте новый пароль для входа в систему.",
+			"password-label": "Ваш новый пароль",
+			"password-placeholder": "Ваш лучший пароль",
+			"repeat-password-label": "Повторите пароль",
+			"button-label": "Подтвердить",
+
+			"footer": "Уже есть аккаунт? <important>Войти</important>"
+		},
+		"two-factor": {
+			"title": "Создание нового пароля",
+			"description": "Создайте новый пароль для входа в систему.",
+			"password-label": "Ваш новый пароль",
+			"password-placeholder": "Ваш лучший пароль",
+			"repeat-password-label": "Повторите пароль",
+			"button-label": "Подтвердить",
+
+			"footer": "Уже есть аккаунт? <important>Войти</important>"
+		}
+	}
+}

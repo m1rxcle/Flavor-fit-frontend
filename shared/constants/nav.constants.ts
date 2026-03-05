@@ -4,7 +4,6 @@ import {
 	HomeIcon,
 	NotebookIcon,
 	StoreIcon,
-	UsersIcon,
 	UtensilsIcon
 } from 'lucide-react'
 
@@ -30,7 +29,7 @@ export const NAV_ITEMS = [
 		icon: ChartLineIcon
 	},
 	{
-		title: 'Заказ продуктов',
+		title: 'Заказы',
 		href: '/order-groceries',
 		icon: StoreIcon
 	},
@@ -38,10 +37,5 @@ export const NAV_ITEMS = [
 		title: 'Рецепты',
 		href: '/recipes',
 		icon: NotebookIcon
-	},
-	{
-		title: 'Форум',
-		href: '/forum',
-		icon: UsersIcon
 	}
 ]

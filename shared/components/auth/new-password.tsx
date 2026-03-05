@@ -2,9 +2,11 @@
 
 import { useMutation } from '@apollo/client/react'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Turnstile } from '@marsidev/react-turnstile'
 import { Loader2Icon, Lock } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { useParams, useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
@@ -26,6 +28,8 @@ import {
 } from '../ui'
 
 export const NewPassword = () => {
+	const [captchaToken, setCaptchaToken] = useState<string | null>('')
+
 	const [showPassword, setShowPassword] = React.useState<boolean>(false)
 	const [showRepeatPassword, setShowRepeatPassword] =
 		React.useState<boolean>(false)
@@ -54,11 +58,16 @@ export const NewPassword = () => {
 						newPassword: data.password,
 						confirmPassword: data.confirmPassword
 					}
+				},
+				context: {
+					headers: {
+						'cf-turnstile-token': captchaToken
+					}
 				}
 			})
 
 			toast.success('Пароль успешно изменен!')
-			router.push('/login')
+			router.push('/auth/login')
 		} catch (error) {
 			console.error(error)
 			if (error instanceof Error && error.message) {
@@ -66,6 +75,8 @@ export const NewPassword = () => {
 			}
 		}
 	}
+
+	const t = useTranslations('auth.new-password')
 
 	return (
 		<>
@@ -83,7 +94,7 @@ export const NewPassword = () => {
 									<div className='relative flex-1 items-center'>
 										<Lock className='text-muted-foreground absolute left-0 h-6 w-6' />
 										<span className='pl-8 text-lg font-bold'>
-											Ваш новый пароль
+											{t('password-label')}
 										</span>
 									</div>
 								</FormLabel>
@@ -99,7 +110,7 @@ export const NewPassword = () => {
 											}
 											placeholder={
 												showPassword
-													? 'Ваш самый надежный пароль'
+													? t('password-placeholder')
 													: '********'
 											}
 											disabled={loading}
@@ -133,7 +144,7 @@ export const NewPassword = () => {
 									<div className='relative flex-1 items-center'>
 										<Lock className='text-muted-foreground absolute left-0 h-6 w-6' />
 										<span className='pl-8 text-lg font-bold'>
-											Повторите ваш пароль
+											{t('repeat-password-label')}
 										</span>
 									</div>
 								</FormLabel>
@@ -149,7 +160,7 @@ export const NewPassword = () => {
 											}
 											placeholder={
 												showRepeatPassword
-													? 'Ваш самый надежный пароль'
+													? t('password-placeholder')
 													: '********'
 											}
 											disabled={loading}
@@ -175,6 +186,15 @@ export const NewPassword = () => {
 							</FormItem>
 						)}
 					/>
+					<div className='flex justify-center pt-2'>
+						<Turnstile
+							siteKey={
+								process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!
+							}
+							onSuccess={token => setCaptchaToken(token)}
+							onExpire={() => setCaptchaToken(null)}
+						/>
+					</div>
 
 					<Button
 						disabled={loading}
@@ -184,7 +204,7 @@ export const NewPassword = () => {
 						{loading ? (
 							<Loader2Icon className='mr-2 size-8 animate-spin' />
 						) : (
-							<span>Подтвердить</span>
+							<span>{t('button-label')}</span>
 						)}
 					</Button>
 				</form>

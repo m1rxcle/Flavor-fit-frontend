@@ -25,7 +25,6 @@ export const AuthInit = ({ children }: { children: React.ReactNode }) => {
 
 				setAccessToken(token)
 				setUser(userData)
-				console.log('After refresh, accessToken =', token)
 			})
 			.catch(() => {
 				setAccessToken(null)

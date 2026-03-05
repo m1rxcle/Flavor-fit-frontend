@@ -6,9 +6,15 @@ export type TAuthWrapperType =
 	| 'verify'
 	| 'reset'
 	| 'new-password'
+	| 'two-factor'
 
 export interface IUserShort {
 	fullName: string
 	email: string
+	role: Role
+}
+
+export interface JwtPayload {
+	id: string
 	role: Role
 }

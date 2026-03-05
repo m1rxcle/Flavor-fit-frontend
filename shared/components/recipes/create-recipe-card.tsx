@@ -12,10 +12,10 @@ export const CreateRecipeCard = () => {
 				alt='maskot'
 				width={150}
 				height={150}
-				className='pointer-events-none absolute -bottom-0.5 -left-4 z-20 hidden overflow-x-visible object-cover lg:block'
+				className='pointer-events-none absolute -bottom-0.5 -left-4 z-20 hidden object-cover lg:block'
 			/>
 			<CardContent className='z-10 ml-0 flex flex-col justify-between space-y-4 px-6 py-4 lg:ml-40 lg:flex-row lg:items-start lg:justify-end lg:gap-10 lg:space-y-4'>
-				<div className='flex flex-col items-start'>
+				<div className='flex flex-col items-start select-none'>
 					<h1
 						className={`${comforter.className} text-primary-foreground text-3xl md:text-4xl`}
 					>

@@ -1,7 +1,6 @@
 import { BellIcon, HeadsetIcon } from 'lucide-react'
 
 import { cn } from '../../lib/utils'
-import { ToggleTheme } from '../kit'
 
 import { HeaderLogo } from './header-logo'
 import { HeaderNavigation } from './header-navigation'
@@ -26,7 +25,6 @@ export const Header: React.FC<Props> = ({ className }) => {
 				{/* Navigation */}
 				<HeaderNavigation />{' '}
 			</div>
-			<ToggleTheme />
 
 			<div className='flex items-center justify-between gap-6'>
 				{/* notifications */}

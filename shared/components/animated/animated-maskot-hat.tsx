@@ -32,6 +32,7 @@ export const AnimatedMaskotHat: React.FC<Props> = ({
 				width={width}
 				height={height}
 				className={className}
+				fetchPriority='high'
 			/>
 		</motion.div>
 	)

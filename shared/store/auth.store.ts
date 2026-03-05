@@ -11,6 +11,9 @@ interface IInitialState {
 	code: string
 	isResendDisabled: boolean
 	secondsLeft: number
+	emailFor2fa: string
+	passwordFor2fa: string
+	captcha: string
 }
 
 interface IActions {
@@ -22,6 +25,10 @@ interface IActions {
 	setCode: (code: string) => void
 	setIsResendDisabled: (value: boolean) => void
 	setSecondsLeft: (value: number) => void
+
+	setEmailFor2fa: (email: string) => void
+	setPasswordFor2fa: (password: string) => void
+	setCaptcha: (captcha: string) => void
 }
 
 interface IAuthState extends IInitialState, IActions {}
@@ -29,13 +36,19 @@ interface IAuthState extends IInitialState, IActions {}
 export const useAuthStore = create<IAuthState>()(set => ({
 	accessToken: null,
 	user: null,
-
+	emailFor2fa: '',
+	passwordFor2fa: '',
 	showPassword: false,
 	showRepeatPassword: false,
 	code: '',
 	isResendDisabled: true,
 	secondsLeft: 60,
+	captcha: '',
 
+	setCaptcha: value => set({ captcha: value }),
+
+	setEmailFor2fa: value => set({ emailFor2fa: value }),
+	setPasswordFor2fa: value => set({ passwordFor2fa: value }),
 	setAccessToken: token => set({ accessToken: token }),
 	setUser: user => set({ user }),
 

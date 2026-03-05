@@ -1,17 +1,20 @@
 import { type NextRequest, NextResponse } from 'next/server'
 
-const PUBLIC_PATHS = ['/login', '/register', '/verify', '/reset-password']
+import { getTokenFromRequest } from './shared/server/get-token-from-request'
+import { jwtVerifyServer } from './shared/server/jwt-verify.server'
 
-export function proxy(req: NextRequest) {
-	const refreshToken = req.cookies.get('refreshToken')
+export async function proxy(req: NextRequest) {
 	const path = req.nextUrl.pathname
+	const isAuthRoute = path.startsWith('/auth')
+	const token = await getTokenFromRequest(req)
+	const payload = token ? await jwtVerifyServer(token) : null
 
-	if (PUBLIC_PATHS.some(publicPath => path.startsWith(publicPath))) {
-		return NextResponse.next()
+	if (payload && isAuthRoute) {
+		return NextResponse.redirect(new URL('/', req.url))
 	}
 
-	if (!refreshToken) {
-		return NextResponse.redirect(new URL('/login', req.url))
+	if (!payload && !isAuthRoute) {
+		return NextResponse.redirect(new URL('/auth/login', req.url))
 	}
 
 	return NextResponse.next()

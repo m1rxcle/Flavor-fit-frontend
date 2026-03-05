@@ -58,7 +58,7 @@ export const RecipeList = ({ limit }: Props) => {
 						releaseOnEdges: true
 					}}
 					slidesPerView={'auto'}
-					spaceBetween={10}
+					spaceBetween={20}
 				>
 					{data.getAllRecipes.map(recipe => {
 						return (
@@ -85,13 +85,13 @@ export const RecipeList = ({ limit }: Props) => {
 						releaseOnEdges: true
 					}}
 					slidesPerView={'auto'}
-					spaceBetween={10}
+					spaceBetween={20}
 				>
 					{data.getAllRecipes.map(recipe => {
 						return (
 							<SwiperSlide
 								key={recipe.id}
-								className='w-auto! cursor-default'
+								className='w-auto! cursor-default py-6'
 							>
 								<RecipeCard recipe={recipe} />
 							</SwiperSlide>

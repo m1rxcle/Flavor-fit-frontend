@@ -1,0 +1,28 @@
+query GetFullProfileAtUser {
+	getMe {
+		id
+		email
+		isVerified
+		profile {
+			fullName
+			age
+			bio
+			gender
+			sites
+			imageUrl
+		}
+		measurements {
+			weightKg
+			goalWeightKg
+
+			armCm
+			chestCm
+			heightCm
+			thighCm
+			waistCm
+
+			nutritionalGoal
+			activityLevel
+		}
+	}
+}

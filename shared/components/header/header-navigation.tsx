@@ -24,12 +24,12 @@ export const HeaderNavigation = () => {
 					className={cn(
 						'bg-secondary group text-secondary-foreground hover:bg-primary',
 						'hover:text-primary-foreground relative flex items-center gap-2',
-						'rounded-full px-4 py-3 transition-colors duration-200 ease-in-out',
+						'rounded-full p-2 transition-colors duration-200 ease-in-out',
 						pathname === item.href &&
 							'bg-primary text-primary-foreground'
 					)}
 				>
-					{active === item.title && (
+					{active === item.title ? (
 						<motion.div
 							layoutId='active-pill'
 							className='bg-primary absolute inset-0 rounded-full'
@@ -39,6 +39,8 @@ export const HeaderNavigation = () => {
 								damping: 30
 							}}
 						/>
+					) : (
+						active !== item.title && null
 					)}
 
 					<span className='relative z-10 flex items-center gap-2'>

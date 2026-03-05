@@ -34,9 +34,9 @@ export const RecipeCard: React.FC<Props> = ({ recipe }) => {
 	return (
 		<Link
 			href={`/recipes/slug?s=${encodeURIComponent(slug)}`}
-			className='inline-block w-auto! cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1 active:scale-98'
+			className='inline-block cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1 active:scale-98'
 		>
-			<Card className='hover:bg-primary-foreground/60 group flex w-75 flex-col rounded-4xl'>
+			<Card className='hover:bg-primary-foreground/60 group flex w-75 flex-col rounded-4xl border'>
 				<CardHeader>
 					<Image
 						src='/images/auth/desktop/helper.jpg'

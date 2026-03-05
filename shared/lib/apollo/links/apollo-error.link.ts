@@ -47,10 +47,17 @@ export const errorLink = new ErrorLink(({ error, operation, forward }) => {
 					isRefreshing = false
 					useAuthStore.getState().setAccessToken(null)
 					observer.error(err)
-					window.location.href = '/login'
+					window.location.href = '/auth/login'
 				})
 		} else {
 			pendingRequests.push(() => {
+				const token = useAuthStore.getState().accessToken
+				operation.setContext(({ headers = {} }) => ({
+					headers: {
+						...headers,
+						authorization: `Bearer ${token}`
+					}
+				}))
 				forward(operation).subscribe(observer)
 			})
 		}

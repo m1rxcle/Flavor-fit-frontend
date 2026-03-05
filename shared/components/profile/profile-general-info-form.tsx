@@ -1,118 +1,158 @@
-import { IdCard, Mail, User2 } from 'lucide-react'
-import React from 'react'
+import { IdCard, Mail, VenusAndMars, Verified } from 'lucide-react'
+import { useFormContext } from 'react-hook-form'
 
-import type { GetMeQuery } from '@/graphql/generated/graphql'
+import type { GetFullProfileAtUserQuery } from '@/graphql/generated/graphql'
 
+import type { TUpdateProfileSchema } from '@/shared/schemas/update-profile-schema'
+
+import { CustomFormInput } from '../kit/custom-form-input'
 import {
 	Button,
-	Input,
-	Select,
-	SelectContent,
-	SelectGroup,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-	Textarea
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+	Input
 } from '../ui'
 
+import { AvatarUpload } from './avatar-upload'
+
 interface Props {
-	profileData: GetMeQuery | undefined
-	loading: boolean
+	profileData: GetFullProfileAtUserQuery['getMe'] | undefined
+	isUpdateLoading: boolean
 }
 
 export const ProfileGeneralInfoForm: React.FC<Props> = ({
 	profileData,
-	loading
+	isUpdateLoading
 }) => {
+	const form = useFormContext<TUpdateProfileSchema>()
+
 	return (
 		<>
 			<div className='flex items-center justify-center gap-4 md:justify-start'>
-				<div className='bg-accent-foreground rounded-full p-4'>
-					<User2 className='text-primary-foreground' />
-				</div>
-				<div className='flex flex-col items-start gap-1'>
-					<h3 className='text-muted-foreground font-bold'>
-						Полное имя
-					</h3>
-					<div className='relative'>
-						<Input
-							type='text'
-							placeholder={profileData?.getMe.fullName}
-							className='rounded-full pl-10'
-							disabled={loading}
-						/>
-						<IdCard className='text-muted-foreground absolute top-1.5 left-2.5 size-6' />
-					</div>
-				</div>
-			</div>
-			<div className='flex flex-col items-start gap-1'>
-				<h3 className='text-muted-foreground font-bold'>Почта</h3>
-				<div className='relative w-full'>
-					<Input
-						type='email'
-						placeholder={profileData?.getMe.email}
-						className='rounded-full pl-10'
-						disabled={loading}
-					/>
-					<Mail className='text-muted-foreground absolute top-1.5 left-2.5' />
-				</div>
-			</div>
-			<div className='flex items-center justify-between gap-4'>
-				<div className='flex w-full flex-col items-start gap-1'>
-					<h3 className='text-muted-foreground font-bold'>Ваш пол</h3>
-					<Select
-						defaultValue={profileData?.getMe.profile?.gender}
-						disabled={loading}
-					>
-						<SelectTrigger className='w-full rounded-full'>
-							<SelectValue
-								placeholder={profileData?.getMe.profile?.gender}
-							/>
-						</SelectTrigger>
-						<SelectContent>
-							<SelectGroup>
-								<SelectItem value='MALE'>Мужской</SelectItem>
-								<SelectItem value='FEMALE'>Женский</SelectItem>
-							</SelectGroup>
-						</SelectContent>
-					</Select>
-				</div>
-				<div className='flex w-full flex-col items-start gap-1'>
-					<h3 className='text-muted-foreground font-bold'>
-						Ваш возраст
-					</h3>
-					<Input
-						type='number'
-						placeholder={`${profileData?.getMe.profile?.age}`}
-						className='rounded-full'
-						disabled={loading}
-					/>
-				</div>
-			</div>
-			<div className='flex flex-col items-start gap-1'>
-				<h3>Биография</h3>
-				<Textarea
-					className='h-20 resize-none rounded-2xl'
-					placeholder={profileData?.getMe.profile?.bio || ''}
-					disabled={loading}
+				<FormField
+					control={form.control}
+					name='profile.imageUrl'
+					render={({ field }) => (
+						<FormItem>
+							<FormControl>
+								<AvatarUpload
+									value={field.value}
+									onChange={field.onChange}
+								/>
+							</FormControl>
+						</FormItem>
+					)}
+				/>
+
+				<CustomFormInput
+					name='profile.fullName'
+					content='input'
+					label='Полное имя'
+					contentId='fullName'
+					type='text'
+					placeholder='Ваше имя'
+					Icon={IdCard}
+					formControl={form.control}
 				/>
 			</div>
-			<div>
-				<h3>Сайты</h3>
-				<div className='mb-4 flex flex-col gap-2'>
-					{profileData?.getMe.profile?.sites &&
-						profileData?.getMe.profile?.sites.map((site, index) => (
-							<Input
-								key={index}
-								placeholder={site}
-								className='rounded-full'
-							/>
-						))}
-				</div>
-				<Button className='rounded-full p-4' disabled={loading}>
-					+ Добавить сайт
-				</Button>
+
+			<CustomFormInput
+				name='profile.email'
+				content='input'
+				label='Почта'
+				contentId='profile.email'
+				type='text'
+				placeholder='Ваше почта'
+				Icon={Mail}
+				formControl={form.control}
+				IconRight={Verified}
+				className='cursor-not-allowed'
+				loading
+				IconRightClassName='text-emerald-500'
+			/>
+
+			<div className='flex items-center justify-between gap-4'>
+				<CustomFormInput
+					name='profile.gender'
+					formControl={form.control}
+					label='Ваш пол'
+					contentId='gender'
+					content='select'
+					selectOptions={[
+						{
+							label: 'Выберите ваш пол',
+							value: ''
+						},
+						{ label: 'Мужской', value: 'MALE' },
+						{ label: 'Женский', value: 'FEMALE' }
+					]}
+					Icon={VenusAndMars}
+					className='pl-10'
+					loading={isUpdateLoading}
+					placeholder='Выберите ваш пол'
+				/>
+
+				<CustomFormInput
+					name='profile.age'
+					label='Ваш возраст'
+					content='input'
+					contentId='profile.age'
+					type='number'
+					placeholder='Введите ваш возраст'
+					formControl={form.control}
+					loading={isUpdateLoading}
+					className='pl-3'
+					contentSpanValue='лет'
+					contentSpanClassName='left-9'
+				/>
 			</div>
+
+			<CustomFormInput
+				name='profile.bio'
+				label='Био'
+				content='textarea'
+				contentId='profile.bio'
+				placeholder='Расскажите всем о себе...'
+				formControl={form.control}
+				loading={isUpdateLoading}
+				className='pl-3'
+			/>
+			<FormField
+				name='profile.sites'
+				control={form.control}
+				render={({ field }) => (
+					<FormItem>
+						<FormLabel htmlFor='sites'>
+							<h3 className='text-muted-foreground'>Сайты</h3>
+						</FormLabel>
+						<FormControl className='mb-4 flex flex-col gap-2'>
+							{profileData?.profile?.sites &&
+								profileData?.profile?.sites.map(
+									(site, index) => (
+										<Input
+											id={`sites.${index}`}
+											key={index}
+											placeholder={site}
+											className='rounded-full text-sm font-semibold md:text-base'
+											{...field}
+										/>
+									)
+								)}
+						</FormControl>
+						<FormMessage />
+
+						<Button
+							className='bg-accent hover:bg-accent/80 rounded-full p-4'
+							disabled={isUpdateLoading}
+						>
+							+ Добавить сайт
+						</Button>
+					</FormItem>
+				)}
+			/>
 		</>
 	)
 }

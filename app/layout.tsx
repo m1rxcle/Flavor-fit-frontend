@@ -1,5 +1,5 @@
+import { NextIntlClientProvider } from 'next-intl'
 import { Fredoka, Marck_Script, Nunito } from 'next/font/google'
-import { ViewTransition } from 'react'
 
 import { Provider } from '@/shared/providers'
 
@@ -22,9 +22,11 @@ export default function AppLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='ru' suppressHydrationWarning>
+		<html lang='ru' suppressHydrationWarning data-scroll-behavior='smooth'>
 			<body className={`${nunito.className} antialiased`}>
-				<Provider>{children}</Provider>
+				<NextIntlClientProvider>
+					<Provider>{children}</Provider>
+				</NextIntlClientProvider>
 			</body>
 		</html>
 	)

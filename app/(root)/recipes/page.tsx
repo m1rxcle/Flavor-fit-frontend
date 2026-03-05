@@ -36,7 +36,7 @@ export default function RecipesPage() {
 
 			<div className='flex min-w-0 flex-col gap-6 md:flex-1'>
 				{/* ad and total created */}
-				<div className='flex flex-col gap-6 lg:mb-6 lg:flex-row lg:gap-6'>
+				<div className='flex flex-col gap-6 lg:mb-6 lg:flex-row'>
 					<CreateRecipeCard />
 
 					<TotalCreatedRecipes />

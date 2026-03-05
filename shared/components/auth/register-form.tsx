@@ -2,6 +2,7 @@
 import { useMutation } from '@apollo/client/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader2Icon, Lock, Mail, MailOpen, UserIcon } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -71,8 +72,8 @@ export const RegisterForm = () => {
                          отправлено письмо с подтверждением,
                          пожалуйста проверьте свою почту и подтвердите регистрацию!`
 			})
-			router.push(
-				`/register/verify?email=${encodeURIComponent(response.email)}`
+			router.replace(
+				`/auth/register/verify?email=${encodeURIComponent(response.email)}`
 			)
 		} catch (error: unknown) {
 			if (error instanceof Error && error.message) {
@@ -85,6 +86,8 @@ export const RegisterForm = () => {
 			}
 		}
 	}
+
+	const t = useTranslations('auth.register')
 
 	return (
 		<Form {...form}>
@@ -101,7 +104,7 @@ export const RegisterForm = () => {
 								<div className='register-fullname-label_block'>
 									<UserIcon className='register-fullname-label_icon' />
 									<span className='register-fullname-label_text'>
-										Ваше полное имя
+										{t('fullName-label')}
 									</span>
 								</div>
 							</FormLabel>
@@ -132,7 +135,7 @@ export const RegisterForm = () => {
 								<div className='register-email-label_block'>
 									<MailOpen className='register-email-label_icon' />
 									<span className='register-email-label_text'>
-										Ваша почта
+										{t('email-label')}
 									</span>
 								</div>
 							</FormLabel>
@@ -163,7 +166,7 @@ export const RegisterForm = () => {
 								<div className='register-password-label_block'>
 									<Lock className='register-password-label_icon' />
 									<span className='register-password-label_text'>
-										Ваш пароль
+										{t('password-label')}
 									</span>
 								</div>
 							</FormLabel>
@@ -177,7 +180,7 @@ export const RegisterForm = () => {
 										}
 										placeholder={
 											showPassword
-												? 'Ваш самый надежный пароль'
+												? t('password-placeholder')
 												: '********'
 										}
 										disabled={loading}
@@ -209,7 +212,7 @@ export const RegisterForm = () => {
 								<div className='register-confirm-password-label_block'>
 									<Lock className='register-confirm-password-label_icon' />
 									<span className='register-confirm-password-label_text'>
-										Повторите ваш пароль
+										{t('repeat-password-label')}
 									</span>
 								</div>
 							</FormLabel>
@@ -225,7 +228,7 @@ export const RegisterForm = () => {
 										}
 										placeholder={
 											showRepeatPassword
-												? 'Ваш самый надежный пароль'
+												? t('password-placeholder')
 												: '********'
 										}
 										disabled={loading}
@@ -257,7 +260,7 @@ export const RegisterForm = () => {
 					{loading ? (
 						<Loader2Icon className='register-submit-button_loader' />
 					) : (
-						<span>Зарегистрироваться</span>
+						<span>{t('button-label')}</span>
 					)}
 				</Button>
 			</form>

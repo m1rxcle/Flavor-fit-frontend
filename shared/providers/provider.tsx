@@ -1,5 +1,4 @@
 'use client'
-
 import { ApolloProvider } from '@apollo/client/react'
 import { Toaster } from 'sonner'
 
