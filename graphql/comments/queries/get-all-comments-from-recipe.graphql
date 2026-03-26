@@ -1,0 +1,18 @@
+query GetAllCommentsFromRecipe($recipeId: String!) {
+	getAllCommentsFromRecipe(recipeId: $recipeId) {
+		id
+		authorId
+		author {
+			id
+			profile {
+				fullName
+				imageUrl
+			}
+		}
+		recipeId
+		content
+
+		createdAt
+		updatedAt
+	}
+}

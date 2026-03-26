@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import { SearchInput } from '@/shared/components/kit/search-input'
 import { CreateRecipeCard } from '@/shared/components/recipes/create-recipe-card'
 import { InlineFiltersList } from '@/shared/components/recipes/inline-filters-list'
-import { RecipeList } from '@/shared/components/recipes/recipe-list'
+import { RecipesList } from '@/shared/components/recipes/recipes-list'
 import { TotalCreatedRecipes } from '@/shared/components/recipes/total-create-recipes'
 import { Card, CardContent } from '@/shared/components/ui/card'
 
@@ -43,7 +43,7 @@ export default function RecipesPage() {
 				</div>
 
 				{/* recipe list */}
-				<RecipeList />
+				<RecipesList />
 			</div>
 		</section>
 	)

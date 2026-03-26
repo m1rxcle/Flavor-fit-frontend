@@ -15,7 +15,7 @@ interface Props {
 	limit?: number
 }
 
-export const RecipeList = ({ limit }: Props) => {
+export const RecipesList = ({ limit }: Props) => {
 	const { data, loading, error } = useQuery(GetAllRecipesDocument, {
 		variables: {
 			data: limit ?? 10

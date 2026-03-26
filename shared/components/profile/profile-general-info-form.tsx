@@ -3,9 +3,9 @@ import { useFormContext } from 'react-hook-form'
 
 import type { GetFullProfileAtUserQuery } from '@/graphql/generated/graphql'
 
-import type { TUpdateProfileSchema } from '@/shared/schemas/update-profile-schema'
+import type { TUpdateProfileSchema } from '@/shared/schemas'
 
-import { CustomFormInput } from '../kit/custom-form-input'
+import { CustomFormInput } from '../kit'
 import {
 	Button,
 	FormControl,

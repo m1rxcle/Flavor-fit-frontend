@@ -4,7 +4,7 @@ import type { IUserShort } from '@/types'
 
 interface IInitialState {
 	accessToken: string | null | undefined
-	user: IUserShort | null
+	user: IUserShort | null | undefined
 
 	showPassword: boolean
 	showRepeatPassword: boolean
@@ -18,7 +18,7 @@ interface IInitialState {
 
 interface IActions {
 	setAccessToken: (token: string | null | undefined) => void
-	setUser: (user: IUserShort | null) => void
+	setUser: (user: IUserShort | null | undefined) => void
 
 	setShowPassword: (value: boolean) => void
 	setShowRepeatPassword: (value: boolean) => void

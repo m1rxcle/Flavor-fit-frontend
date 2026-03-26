@@ -17,10 +17,13 @@ export const CookingTimeBadge: React.FC<Props> = ({
 	return (
 		<Badge
 			variant='secondary'
-			className={cn('flex items-center rounded-md', className)}
+			className={cn(
+				'flex items-center rounded-md text-xs font-semibold',
+				className
+			)}
 		>
 			<Clock />
-			<span className='text-xs font-semibold'>{cookingTime}мин</span>
+			{cookingTime}мин
 		</Badge>
 	)
 }

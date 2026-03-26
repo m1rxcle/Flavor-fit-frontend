@@ -3,6 +3,7 @@ query GetFullProfileAtUser {
 		id
 		email
 		isVerified
+		isTwoFactorEnabled
 		profile {
 			fullName
 			age

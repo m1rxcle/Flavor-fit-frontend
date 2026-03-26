@@ -38,8 +38,8 @@ export const BodyMeasurements = ({
 					alt='pic'
 					width={120}
 					height={100}
-					priority
-					className='hidden 2xl:inline'
+					fetchPriority='high'
+					className='pointer-events-none hidden select-none 2xl:inline'
 				/>
 				<BodyMeasurementsForm
 					isUpdateProfileLoading={isUpdateProfileLoading}

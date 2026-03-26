@@ -14,10 +14,13 @@ export const CaloryBadge: React.FC<Props> = ({ calories, className }) => {
 	return (
 		<Badge
 			variant='secondary'
-			className={cn('flex items-center rounded-md', className)}
+			className={cn(
+				'flex items-center rounded-md text-xs font-semibold',
+				className
+			)}
 		>
 			<Flame />
-			<span className='text-xs font-semibold'>{calories}ккал</span>
+			{calories}ккал
 		</Badge>
 	)
 }

@@ -45,7 +45,7 @@ export const LogoutButton = ({ className }: { className?: string }) => {
 				onClick={() => setIsOpenDialog(true)}
 				disabled={isLogoutLoading}
 			>
-				<span className='hidden text-lg font-bold md:inline'>
+				<span className='hidden text-base font-bold md:inline'>
 					Выйти
 				</span>
 				<LogOut className='inline md:hidden' />

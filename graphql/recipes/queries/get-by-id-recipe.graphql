@@ -10,8 +10,8 @@ query GetByIdRecipe($id: String!) {
 			fiber
 		}
 		recipeIngredients {
+			id
 			quantity
-			ingredientId
 			unit
 		}
 	}

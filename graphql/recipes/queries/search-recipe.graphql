@@ -7,7 +7,7 @@ query SearchRecipe($searchTerm: String!) {
 		}
 		description
 		recipeIngredients {
-			ingredientId
+			id
 		}
 	}
 }

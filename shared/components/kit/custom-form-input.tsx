@@ -17,7 +17,7 @@ import {
 
 interface Props<T extends FieldValues> {
 	name: Path<T>
-	label: string
+	label?: string
 	Icon?: LucideIcon
 	IconRight?: LucideIcon
 	IconRightClassName?: string
@@ -32,6 +32,8 @@ interface Props<T extends FieldValues> {
 	className?: string
 	contentSpanValue?: 'см' | 'кг' | 'лет'
 	contentSpanClassName?: string
+
+	areaDefaultValue?: string
 }
 
 export const CustomFormInput = <T extends FieldValues>({
@@ -49,7 +51,8 @@ export const CustomFormInput = <T extends FieldValues>({
 	contentId,
 	contentSpanValue,
 	contentSpanClassName,
-	selectOptions
+	selectOptions,
+	areaDefaultValue
 }: Props<T>) => {
 	return (
 		<FormField
@@ -68,7 +71,9 @@ export const CustomFormInput = <T extends FieldValues>({
 								<Input
 									id={contentId}
 									className={cn(
-										'focus-visible:ring-accent rounded-full pl-10 text-sm transition-all duration-300 ease-in-out focus-visible:border-none focus-visible:ring-1 md:text-base',
+										'rounded-full pl-10 text-sm md:text-base',
+										'focus-visible:ring-accent focus-visible:border-none focus-visible:ring-1',
+										'transition-all duration-300 ease-in-out',
 										className
 									)}
 									placeholder={placeholder}
@@ -91,7 +96,9 @@ export const CustomFormInput = <T extends FieldValues>({
 									id={contentId}
 									disabled={loading}
 									className={cn(
-										'select:text-2xl focus-visible:ring-accent cursor-pointer rounded-full text-sm transition-all duration-300 ease-in-out focus-visible:border-none focus-visible:ring-1 md:text-base',
+										'cursor-pointer rounded-full text-sm md:text-base',
+										'select:text-2xl focus-visible:ring-accent focus-visible:border-none focus-visible:ring-1',
+										'transition-all duration-300 ease-in-out',
 										className
 									)}
 								>
@@ -110,9 +117,12 @@ export const CustomFormInput = <T extends FieldValues>({
 								<Textarea
 									id={contentId}
 									className={cn(
-										'textarea-scrollbar focus-visible:ring-accent h-28 resize-none rounded-2xl text-sm font-semibold wrap-break-word transition-all duration-300 ease-in-out focus-visible:border-none focus-visible:ring-1 md:text-base',
+										'textarea-scrollbar h-28 resize-none rounded-2xl text-sm wrap-break-word md:text-base',
+										'focus-visible:ring-accent font-semibold placeholder:text-sm focus-visible:border-none focus-visible:ring-1',
+										'transition-all duration-300 ease-in-out',
 										className
 									)}
+									defaultValue={areaDefaultValue}
 									placeholder={placeholder}
 									disabled={loading}
 									{...field}

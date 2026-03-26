@@ -15,7 +15,7 @@ import {
 import {
 	type TUpdateProfileSchema,
 	UpdateProfileSchema
-} from '@/shared/schemas/update-profile-schema'
+} from '@/shared/schemas'
 
 import { Button, Card, CardContent } from '../ui'
 
@@ -130,8 +130,6 @@ export const ProfileInfo = () => {
 					}
 				}
 			})
-
-			toast.success('Данные успешно обновлены!')
 			resetForm()
 		} catch (error) {
 			if (error instanceof Error && error.message) {

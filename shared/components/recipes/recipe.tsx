@@ -1,45 +1,38 @@
 'use client'
 
 import { useQuery } from '@apollo/client/react'
-import { useSearchParams } from 'next/navigation'
 
 import { GetBySlugRecipeDocument } from '@/graphql/generated/graphql'
 
-import { Card, CardContent } from '../ui/card'
+import { CommentsInRecipe } from '../comments/comments-in-recipe'
 
-import { useAuthStore } from '@/shared/store/auth.store'
+import { RecipeWithRecipeStep } from './recipe-with-recipe-step'
+import { RecipeSkeleton } from './skeletons/recipe-skeleton'
 
-export const Recipe = () => {
-	const searchParams = useSearchParams()
-	const { user, accessToken } = useAuthStore()
+interface Props {
+	slug: string
+}
 
-	console.log(user?.fullName, user?.email, accessToken)
-
-	const { data, loading, error } = useQuery(GetBySlugRecipeDocument, {
-		variables: {
-			slug: searchParams.get('s') as string
+export const Recipe = ({ slug }: Props) => {
+	const { data: recipe, loading: recipeLoading } = useQuery(
+		GetBySlugRecipeDocument,
+		{
+			variables: { slug }
 		}
-	})
+	)
 
-	console.log(data?.getRecipeBySlug.title)
+	if (!recipe?.getRecipeBySlug || recipeLoading) return <RecipeSkeleton />
 
 	return (
-		<section className='px-6 py-6'>
-			<Card>
-				<CardContent>
-					{loading ? (
-						'Loading...'
-					) : (
-						<>
-							<div>
-								<p>Рецепт от {user?.fullName}</p>
-							</div>
-							<h1>{data?.getRecipeBySlug.title}</h1>
-							<p>{data?.getRecipeBySlug.description}</p>
-						</>
-					)}
-				</CardContent>
-			</Card>
+		<section className='flex h-full flex-col gap-6 px-6 py-6 xl:flex-row'>
+			<div className='flex-1'>
+				<RecipeWithRecipeStep recipe={recipe.getRecipeBySlug} />
+			</div>
+			<CommentsInRecipe
+				recipeId={recipe.getRecipeBySlug.id}
+				totalLikes={recipe.getRecipeBySlug.likes?.length}
+				totalViews={recipe.getRecipeBySlug.views?.length}
+			/>
 		</section>
 	)
 }

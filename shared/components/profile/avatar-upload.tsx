@@ -23,7 +23,7 @@ export const AvatarUpload: React.FC<Props> = ({
 	const [isLoading, setIsLoading] = useState(false)
 	const [imageError, setImageError] = useState(false)
 
-	const avatarUrl = value && `${SERVER_URL}${value}`
+	const avatarUrl = value && `${value}`
 	const showFallback = !avatarUrl || imageError
 
 	const handleUpload = async (file: File) => {
@@ -48,7 +48,6 @@ export const AvatarUpload: React.FC<Props> = ({
 		}
 
 		const data = await response.json()
-		console.log(data)
 
 		if (onChange) onChange(data.url)
 

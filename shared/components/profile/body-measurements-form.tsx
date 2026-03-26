@@ -1,7 +1,7 @@
 import { PersonStanding, Ruler, WeightTilde } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'
 
-import type { TUpdateProfileSchema } from '@/shared/schemas/update-profile-schema'
+import type { TUpdateProfileSchema } from '@/shared/schemas'
 
 import { CustomFormInput } from '../kit/custom-form-input'
 
@@ -38,6 +38,7 @@ export const BodyMeasurementsForm = ({ isUpdateProfileLoading }: Props) => {
 					placeholder='Ваш вес'
 					type='text'
 					contentSpanValue='кг'
+					contentSpanClassName='left-18'
 					loading={isUpdateProfileLoading}
 				/>
 
@@ -51,6 +52,7 @@ export const BodyMeasurementsForm = ({ isUpdateProfileLoading }: Props) => {
 					placeholder='Желаемый вес'
 					type='text'
 					contentSpanValue='кг'
+					contentSpanClassName='left-18'
 					loading={isUpdateProfileLoading}
 				/>
 			</div>
@@ -67,6 +69,7 @@ export const BodyMeasurementsForm = ({ isUpdateProfileLoading }: Props) => {
 						type='text'
 						loading={isUpdateProfileLoading}
 						contentSpanValue='см'
+						contentSpanClassName='left-18'
 					/>
 
 					<CustomFormInput
@@ -96,6 +99,7 @@ export const BodyMeasurementsForm = ({ isUpdateProfileLoading }: Props) => {
 					Icon={Ruler}
 					contentId='thighCircumference'
 					contentSpanValue='см'
+					contentSpanClassName='left-18'
 				/>
 				<CustomFormInput
 					name='measurements.armCircumference'
@@ -108,6 +112,7 @@ export const BodyMeasurementsForm = ({ isUpdateProfileLoading }: Props) => {
 					Icon={Ruler}
 					contentId='armCircumference'
 					contentSpanValue='см'
+					contentSpanClassName='left-18'
 				/>
 			</div>
 

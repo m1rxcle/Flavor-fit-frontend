@@ -40,7 +40,6 @@ export const ResetForm = () => {
 	})
 
 	const onSubmit = async (data: RecoveryInput) => {
-		console.log(data)
 		try {
 			await resetPassword({
 				variables: {

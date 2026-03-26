@@ -8,7 +8,7 @@ import { Binary, Loader2Icon, Lock, Mail, MailOpen } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
@@ -77,7 +77,7 @@ export const LoginForm = () => {
 			})
 
 			if (result.error) {
-				toast.error(result.error.message, { id: 'response-error' })
+				toast.error('Произошла ошибка', { id: 'response-error' })
 				reset()
 				return
 			}
@@ -105,7 +105,7 @@ export const LoginForm = () => {
 
 			setCaptchaToken(null)
 			setAccessToken(response.accessToken)
-			setUser(response.user ?? null)
+			setUser(response.user)
 			toast.success('Вы успешно вошли в систему!', {
 				id: 'login-success'
 			})

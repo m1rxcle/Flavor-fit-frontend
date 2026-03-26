@@ -1,0 +1,17 @@
+mutation EditComment($id: String!, $input: EditCommentInput!) {
+	editComment(id: $id, input: $input) {
+		id
+		authorId
+		author {
+			id
+			profile {
+				fullName
+				imageUrl
+			}
+		}
+		recipeId
+		content
+		createdAt
+		updatedAt
+	}
+}

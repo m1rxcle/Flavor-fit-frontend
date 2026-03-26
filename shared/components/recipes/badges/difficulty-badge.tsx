@@ -38,7 +38,8 @@ export const DifficultyBadge: React.FC<Props> = ({ difficulty, className }) => {
 						: difficulty === Difficulty.Medium
 							? 'bg-yellow-500/15 text-yellow-500'
 							: 'bg-green-500/15 text-green-500'
-				} flex items-center rounded-md p-1`
+				} flex items-center rounded-md p-1`,
+				className
 			)}
 		>
 			{starArray.map((star, index) => (

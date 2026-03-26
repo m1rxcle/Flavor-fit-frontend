@@ -75,16 +75,7 @@ export const TwoFactorOtp = () => {
 					}
 				})
 
-				console.log(
-					'Email',
-					useAuthStore.getState().emailFor2fa,
-					'password',
-					useAuthStore.getState().passwordFor2fa
-				)
-
 				const response = result.data?.login
-
-				console.log('Response', response, 'Result', result)
 
 				if (!response) return
 

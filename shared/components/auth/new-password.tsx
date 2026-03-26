@@ -49,7 +49,6 @@ export const NewPassword = () => {
 	})
 
 	const onSubmit = async (data: TNewPasswordSchema) => {
-		console.log(data)
 		try {
 			await newPassword({
 				variables: {
