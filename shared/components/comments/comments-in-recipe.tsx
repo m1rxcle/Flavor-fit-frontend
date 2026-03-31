@@ -38,8 +38,10 @@ export const CommentsInRecipe = ({
 	return (
 		<Card
 			className={cn(
-				collapsed ? 'lg:hidden' : ' ',
-				'max-h-[calc(50vh)] xl:max-h-[calc(100dvh-9rem)]',
+				'overflow-hidden transition-all duration-300 ease-in-out',
+				collapsed
+					? 'pointer-events-none max-w-0 translate-x-2 opacity-0'
+					: 'max-h-[calc(50vh)] max-w-full translate-x-0 opacity-100 xl:max-h-[calc(100dvh-9rem)]',
 				className
 			)}
 		>
@@ -67,10 +69,10 @@ export const CommentsInRecipe = ({
 					</div>
 					<div className='flex items-center gap-4'>
 						<div>
-							{totalLikes && <LikeBadge likes={totalLikes} />}
+							<LikeBadge likes={totalLikes} />
 						</div>
 						<div>
-							{totalViews && <ViewBadge views={totalViews} />}
+							<ViewBadge views={totalViews} />
 						</div>
 					</div>
 				</div>

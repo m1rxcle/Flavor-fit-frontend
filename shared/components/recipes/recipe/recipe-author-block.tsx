@@ -14,7 +14,12 @@ export const RecipeAuthorBlock: React.FC<Props> = ({
 	className
 }) => {
 	return (
-		<div className={cn('flex items-center gap-2', className)}>
+		<div
+			className={cn(
+				'flex max-w-full min-w-0 items-center gap-2',
+				className
+			)}
+		>
 			<Image
 				src={imageUrl}
 				alt='profile img'
@@ -23,7 +28,7 @@ export const RecipeAuthorBlock: React.FC<Props> = ({
 				priority
 				className='rounded-full'
 			/>
-			<p className='text-muted-foreground line-clamp-2 truncate text-sm'>
+			<p className='text-muted-foreground min-w-0 truncate text-sm break-all'>
 				{email}
 			</p>
 		</div>

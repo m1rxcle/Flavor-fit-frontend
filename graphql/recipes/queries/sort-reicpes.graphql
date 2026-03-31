@@ -1,19 +1,21 @@
-query SortRecipe($sortBy: SortByEnum!) {
-	sortRecipes(sortBy: $sortBy) {
+query SortRecipe($sortBy: SortByEnum!, $take: Float, $offset: Float) {
+	sortRecipes(take: $take, skip: $offset, sortBy: $sortBy) {
 		id
 		title
 		slug
 		description
+		imageUrl
+		calories
+		cookingTime
+		difficulty
 		likes {
+			id
 			userId
 		}
-		tag {
-			name
-		}
+
 		views {
+			id
 			userId
 		}
-		createdAt
-		updatedAt
 	}
 }

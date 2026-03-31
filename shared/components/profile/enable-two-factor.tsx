@@ -2,6 +2,7 @@
 
 import { useMutation, useQuery } from '@apollo/client/react'
 import { Shield } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
@@ -29,18 +30,16 @@ export const EnableTwoFactor = () => {
 	const [disable2fa, { loading: isDisabling }] =
 		useMutation(Disable2FaDocument)
 
+	const t = useTranslations('settings.twoFactor')
+
 	return (
-		<div className='flex flex-col gap-4'>
-			<div>
-				<h1 className='flex items-center gap-2 text-2xl font-bold'>
+		<div className='flex flex-col justify-between gap-4'>
+			<div className='space-y-2'>
+				<div className='flex items-center gap-2'>
 					<Shield className='text-muted-foreground' />
-					Включите двухфакторную аутентификацию
-				</h1>
-				<p className='text-muted-foreground'>
-					При включенном двухфакторной аутентификации вы будете
-					получать код на почту всякий раз когда будете пытаться войти
-					в аккаунт, тем самым увеличивая безопасность
-				</p>
+					<h1 className='text-2xl font-bold'>{t('title')}</h1>
+				</div>
+				<p className='text-muted-foreground'>{t('description')}</p>
 			</div>
 			<Switch
 				size='max'

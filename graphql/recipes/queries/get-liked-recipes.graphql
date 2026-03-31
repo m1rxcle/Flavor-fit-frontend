@@ -1,5 +1,5 @@
-query GetAllRecipes($data: Float!) {
-	getAllRecipes(take: $data) {
+query GetLikedRecipes($take: Float!) {
+	getLikedRecipes(take: $take) {
 		id
 		title
 		slug
@@ -9,8 +9,10 @@ query GetAllRecipes($data: Float!) {
 		cookingTime
 		difficulty
 		likes {
+			id
 			userId
 		}
+
 		views {
 			id
 			userId

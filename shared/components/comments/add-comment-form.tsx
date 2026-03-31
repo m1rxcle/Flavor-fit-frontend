@@ -30,7 +30,11 @@ interface Props {
 
 export const AddCommentForm: React.FC<Props> = ({ recipeId, className }) => {
 	const [createComment, { loading: createLoading }] = useMutation(
-		CreateCommentDocument
+		CreateCommentDocument,
+		{
+			awaitRefetchQueries: true,
+			refetchQueries: ['GetAllCommentsFromRecipe']
+		}
 	)
 
 	const [editComment, { loading: editLoading }] =
@@ -54,30 +58,6 @@ export const AddCommentForm: React.FC<Props> = ({ recipeId, className }) => {
 						recipeId,
 						content: data.content.trim()
 					}
-				},
-
-				update(cache, { data }) {
-					const newComments = data?.createComment
-
-					if (!newComments) return
-
-					const existing = cache.readQuery({
-						query: GetAllCommentsFromRecipeDocument,
-						variables: { recipeId }
-					})
-
-					if (!existing) return
-
-					cache.writeQuery({
-						query: GetAllCommentsFromRecipeDocument,
-						variables: { recipeId },
-						data: {
-							getAllCommentsFromRecipe: [
-								...existing.getAllCommentsFromRecipe,
-								newComments
-							]
-						}
-					})
 				}
 			})
 
@@ -95,7 +75,7 @@ export const AddCommentForm: React.FC<Props> = ({ recipeId, className }) => {
 		}
 	}
 
-	const handleEdit = async (commentId: string, content: string) => {
+	const handleEditComment = async (commentId: string, content: string) => {
 		if (!commentId) {
 			toast.error('Комментарий не найден', {
 				id: 'edit-comment-not-found-error-catch'
@@ -167,7 +147,7 @@ export const AddCommentForm: React.FC<Props> = ({ recipeId, className }) => {
 
 	const onSubmit = (data: TCreateCommentSchema) => {
 		if (editingComment) {
-			handleEdit(editingComment.id, data.content)
+			handleEditComment(editingComment.id, data.content)
 		} else {
 			handleCreateComment(data)
 		}
@@ -185,7 +165,7 @@ export const AddCommentForm: React.FC<Props> = ({ recipeId, className }) => {
 
 	const toolbarClasses = cn(
 		isEditing ? 'max-h-10 opacity-100' : 'max-h-0 p-0 opacity-0',
-		'bg-foreground/20 z-10 flex justify-end gap-2 overflow-hidden rounded-t-xl p-0.5  transition-all duration-300 ease-in-out'
+		'bg-foreground/20 z-10 flex justify-end gap-2 overflow-hidden rounded-t-xl p-0.5 px-2 transition-all duration-300 ease-in-out'
 	)
 
 	return (
@@ -202,7 +182,7 @@ export const AddCommentForm: React.FC<Props> = ({ recipeId, className }) => {
 							<Button
 								disabled={editLoading}
 								type='submit'
-								className='rounded-full'
+								className='rounded-xl'
 								variant='secondary'
 							>
 								<span className='text-foreground text-xs'>
@@ -212,7 +192,7 @@ export const AddCommentForm: React.FC<Props> = ({ recipeId, className }) => {
 							<Button
 								disabled={editLoading}
 								type='button'
-								className='rounded-full'
+								className='rounded-xl'
 								onClick={cancelEditing}
 								variant='secondary'
 							>
@@ -247,7 +227,7 @@ export const AddCommentForm: React.FC<Props> = ({ recipeId, className }) => {
 						{!isEditing && (
 							<Button
 								disabled={createLoading}
-								className='rounded-full p-4'
+								className='rounded-full p-5'
 							>
 								<ArrowUp />
 							</Button>

@@ -63,5 +63,32 @@
 				"footer": "Уже есть аккаунт? <important>Войти</important>"
 			}
 		}
+	},
+	"settings": {
+		"title": "Settings",
+		"emailChange": {
+			"title": "Change Email",
+			"warning": "<bold>Warning!</bold> If you change your email, you will need to verify it the next time you log in.",
+			"emailLabel": "New Email",
+			"inputPlaceholder": "Enter new email",
+			"buttonLabel": "Change"
+		},
+		"passwordChange": {
+			"title": "Change Password",
+			"description": "You can change your password to keep your account secure.",
+			"currentPasswordLabel": "Enter current password",
+			"currentPasswordPlaceholder": "Your current password",
+			"newPasswordLabel": "Enter new password",
+			"newPasswordPlaceholder": "Your new password",
+			"buttonLabel": "Change"
+		},
+		"twoFactor": {
+			"title": "Enable Two-Factor Authentication",
+			"description": "When two-factor authentication is enabled, you will receive a code via email every time you try to log in, increasing your account security."
+		},
+		"changeLanguage": {
+			"title": "Language Selection",
+			"description": "Choose the interface language for the application. Your choice will be change the interface language."
+		}
 	}
 }

@@ -4,7 +4,7 @@ import type { Difficulty } from '@/graphql/generated/graphql'
 
 import { cn } from '@/shared/lib/utils'
 
-import { CaloryBadge, CookingTimeBadge, DifficultyBadge } from './badges'
+import { CaloryBadge, CookingTimeBadge, DifficultyBadge } from './../badges'
 
 interface Props {
 	calories?: number

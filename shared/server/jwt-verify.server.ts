@@ -8,7 +8,7 @@ export async function jwtVerifyServer(accessToken: string) {
 	try {
 		const { payload }: { payload: JwtPayload } = await jwtVerify(
 			accessToken,
-			new TextEncoder().encode(process.env.JWT_SECRET)
+			new TextEncoder().encode(process.env['JWT_SECRET'])
 		)
 		return payload
 	} catch (err) {

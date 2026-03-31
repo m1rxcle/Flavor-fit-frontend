@@ -1,11 +1,17 @@
 'use client'
 
-import { useMutation } from '@apollo/client/react'
-import { Heart } from 'lucide-react'
+import { useMutation, useQuery } from '@apollo/client/react'
+import { Heart, Loader2 } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
-import { ToggleLikeDocument } from '@/graphql/generated/graphql'
+import {
+	GetBySlugRecipeDocument,
+	GetLikedRecipesDocument,
+	SearchRecipeDocument,
+	SortRecipeDocument,
+	ToggleLikeDocument
+} from '@/graphql/generated/graphql'
 
 import { cn } from '@/shared/lib/utils'
 
@@ -15,7 +21,12 @@ interface Props {
 }
 
 export const AddToFavoriteButton = ({ isLiked, recipeId }: Props) => {
-	const [toggleLike] = useMutation(ToggleLikeDocument)
+	const [toggleLike, { loading }] = useMutation(ToggleLikeDocument)
+	const { refetch } = useQuery(GetLikedRecipesDocument, {
+		variables: {
+			take: 10
+		}
+	})
 	const [isRecipeLiked, setIsRecipeLiked] = useState(!!isLiked)
 
 	const handleToggleLike = async (recipeId: string) => {
@@ -23,7 +34,14 @@ export const AddToFavoriteButton = ({ isLiked, recipeId }: Props) => {
 			const { data } = await toggleLike({
 				variables: {
 					recipeId
-				}
+				},
+				refetchQueries: [
+					GetLikedRecipesDocument,
+					SortRecipeDocument,
+					SearchRecipeDocument,
+					GetBySlugRecipeDocument
+				],
+				awaitRefetchQueries: true
 			})
 
 			if (!data) {
@@ -35,6 +53,7 @@ export const AddToFavoriteButton = ({ isLiked, recipeId }: Props) => {
 
 			const changedIsLikedButton = data.toggleLike.isLiked
 			setIsRecipeLiked(changedIsLikedButton)
+			await refetch()
 
 			if (changedIsLikedButton) {
 				toast.success('Рецепт успешно добавлен в избранное!', {
@@ -55,14 +74,18 @@ export const AddToFavoriteButton = ({ isLiked, recipeId }: Props) => {
 
 	return (
 		<div>
-			<Heart
-				className={cn(
-					'text-muted-foreground hover:text-primary size-6 cursor-pointer transition-all duration-300 ease-in-out hover:scale-110 active:scale-95',
-					isRecipeLiked &&
-						'scale-110 fill-red-500 text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.7)] transition-all duration-300 ease-in-out hover:text-red-500 active:scale-95'
-				)}
-				onClick={() => handleToggleLike(recipeId)}
-			/>
+			{loading ? (
+				<Loader2 className='text-muted-foreground size-6 animate-spin' />
+			) : (
+				<Heart
+					className={cn(
+						'text-muted-foreground hover:text-primary size-6 cursor-pointer transition-all duration-300 ease-in-out hover:scale-110 active:scale-95',
+						isRecipeLiked &&
+							'scale-110 fill-red-500 text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.7)] transition-all duration-300 ease-in-out hover:text-red-500 active:scale-95'
+					)}
+					onClick={() => handleToggleLike(recipeId)}
+				/>
+			)}
 		</div>
 	)
 }

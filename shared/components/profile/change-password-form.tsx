@@ -3,6 +3,7 @@
 import { useMutation } from '@apollo/client/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { LockOpen, UserLock } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
@@ -54,17 +55,16 @@ export const ChangePasswordForm = () => {
 		}
 	}
 
+	const t = useTranslations('settings.passwordChange')
+
 	return (
 		<div className={cn('flex flex-col gap-4')}>
-			<div>
+			<div className='space-y-2'>
 				<div className='flex items-center gap-2'>
 					<UserLock className='text-muted-foreground' />
-					<h1 className='text-2xl font-bold'>Смена пароля</h1>
+					<h1 className='text-2xl font-bold'>{t('title')}</h1>
 				</div>
-				<p className='text-muted-foreground'>
-					Вы можете изменить свой пароль, чтобы защитить свою учетную
-					запись
-				</p>
+				<p className='text-muted-foreground'>{t('description')}</p>
 			</div>
 
 			<Form {...form}>
@@ -75,8 +75,8 @@ export const ChangePasswordForm = () => {
 					<CustomFormInput
 						name='oldPassword'
 						formControl={form.control}
-						label='Введите старый пароль'
-						placeholder='Ваш лучший старый пароль'
+						label={t('currentPasswordLabel')}
+						placeholder={t('currentPasswordPlaceholder')}
 						type='password'
 						content='input'
 						contentId='oldPassId'
@@ -88,8 +88,8 @@ export const ChangePasswordForm = () => {
 					<CustomFormInput
 						name='newPassword'
 						formControl={form.control}
-						label='Введите новый пароль'
-						placeholder='Ваш лучший новый пароль'
+						label={t('newPasswordLabel')}
+						placeholder={t('newPasswordPlaceholder')}
 						type='password'
 						content='input'
 						contentId='newPassId'
@@ -105,7 +105,7 @@ export const ChangePasswordForm = () => {
 						disabled={loading}
 					>
 						<span className='text-primary text-base font-semibold'>
-							Изменить
+							{t('buttonLabel')}
 						</span>
 					</Button>
 				</form>

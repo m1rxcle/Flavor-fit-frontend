@@ -13,7 +13,7 @@ export const InlineFiltersList = () => {
 	}
 
 	return (
-		<div className='flex h-[70vh] flex-col gap-6 overflow-x-hidden overflow-y-auto'>
+		<div className='flex flex-col gap-6 overflow-x-hidden overflow-y-hidden'>
 			{FILTERS_DATA.map(filter => {
 				const isOpen = !!openMap[filter.title]
 

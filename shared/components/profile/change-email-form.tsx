@@ -3,6 +3,7 @@
 import { useMutation } from '@apollo/client/react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Mail, MailOpen } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
@@ -49,16 +50,20 @@ export const ChangeEmailForm = () => {
 		}
 	}
 
+	const t = useTranslations('settings.emailChange')
+
 	return (
 		<div className={cn('flex flex-col gap-4')}>
 			<div className='flex items-center gap-2'>
 				<MailOpen className='text-muted-foreground' />
-				<h1 className='text-2xl font-bold'>Смена почты</h1>
+				<h1 className='text-2xl font-bold'>{t('title')}</h1>
 			</div>
 			<p className='text-accent border-muted-foreground w-full rounded-md border-2 border-dashed bg-slate-700/10 p-4 backdrop-blur-2xl md:w-10/12'>
-				<span className='font-bold uppercase'>Внимание!</span> Если вы
-				смените почту,то при последующем входе в систему, вам нужно
-				будет ее подтвердить!
+				{t.rich('warning', {
+					bold: chunk => (
+						<span className='font-bold uppercase'>{chunk}</span>
+					)
+				})}
 			</p>
 			<Form {...form}>
 				<form
@@ -68,8 +73,8 @@ export const ChangeEmailForm = () => {
 					<CustomFormInput
 						name='newEmail'
 						formControl={form.control}
-						label='Новая почта'
-						placeholder='Введите новую почту'
+						label={t('emailLabel')}
+						placeholder={t('inputPlaceholder')}
 						type='email'
 						content='input'
 						contentId='newEmailId'
@@ -85,7 +90,7 @@ export const ChangeEmailForm = () => {
 						disabled={loading}
 					>
 						<span className='text-primary text-base font-semibold'>
-							Изменить
+							{t('buttonLabel')}
 						</span>
 					</Button>
 				</form>

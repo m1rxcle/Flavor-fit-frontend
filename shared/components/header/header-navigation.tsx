@@ -32,16 +32,14 @@ export const HeaderNavigation = () => {
 					{active === item.title ? (
 						<motion.div
 							layoutId='active-pill'
-							className='bg-primary absolute inset-0 rounded-full'
+							className='bg-primary text-primary-foreground absolute inset-0 rounded-full'
 							transition={{
 								type: 'spring',
 								stiffness: 500,
 								damping: 30
 							}}
 						/>
-					) : (
-						active !== item.title && null
-					)}
+					) : null}
 
 					<span className='relative z-10 flex items-center gap-2'>
 						<item.icon className='size-4' />

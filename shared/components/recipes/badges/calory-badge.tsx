@@ -19,7 +19,7 @@ export const CaloryBadge: React.FC<Props> = ({ calories, className }) => {
 				className
 			)}
 		>
-			<Flame />
+			<Flame className='text-accent' />
 			{calories}ккал
 		</Badge>
 	)

@@ -1,11 +1,10 @@
-import Image from 'next/image'
 import React from 'react'
 
 import type { GetBySlugRecipeQuery } from '@/graphql/generated/graphql'
 
 import { cn } from '@/shared/lib/utils'
 
-import { Card, CardContent, CardHeader } from '../ui'
+import { Card, CardContent, CardHeader } from '../../ui'
 
 interface Props {
 	recipeIngredients: GetBySlugRecipeQuery['getRecipeBySlug']['recipeIngredients']

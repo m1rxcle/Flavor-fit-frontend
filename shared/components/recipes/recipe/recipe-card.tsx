@@ -3,18 +3,21 @@ import React from 'react'
 
 import type { GetAllRecipesQuery } from '@/graphql/generated/graphql'
 
-import { Card, CardContent, CardHeader } from '../ui/card'
+import { cn } from '@/shared/lib/utils'
 
-import { LikeBadge, ViewBadge } from './badges'
+import { Card, CardContent, CardHeader } from '../../ui'
+import { LikeBadge, ViewBadge } from '../badges'
+
 import { RecipeBadgesBlock } from './recipe-badges-block'
 import { RecipeDescriptionBlock } from './recipe-description-block'
 import { RecipeImage } from './recipe-image'
 
 interface Props {
 	recipe: GetAllRecipesQuery['getAllRecipes'][number]
+	className?: string
 }
 
-export const RecipeCard: React.FC<Props> = ({ recipe }) => {
+export const RecipeCard: React.FC<Props> = ({ recipe, className }) => {
 	const {
 		calories,
 		cookingTime,
@@ -31,9 +34,14 @@ export const RecipeCard: React.FC<Props> = ({ recipe }) => {
 		<Link
 			href={`/recipes/${slug}`}
 			prefetch
-			className='inline-block cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1 active:scale-98'
+			className='inline-block cursor-pointer transition-all duration-300 ease-in-out hover:-translate-y-1 active:scale-98 md:hover:rotate-2'
 		>
-			<Card className='hover:bg-primary-foreground/60 group flex w-75 flex-col rounded-4xl border'>
+			<Card
+				className={cn(
+					'hover:bg-primary-foreground flex w-75 flex-col rounded-4xl border',
+					className
+				)}
+			>
 				<CardHeader>
 					<RecipeImage
 						className='h-30 min-h-30 md:h-30 md:min-h-30'

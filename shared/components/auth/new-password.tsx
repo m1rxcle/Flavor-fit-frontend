@@ -6,7 +6,6 @@ import { Turnstile } from '@marsidev/react-turnstile'
 import { Loader2Icon, Lock } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useParams, useRouter } from 'next/navigation'
-import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
@@ -27,15 +26,20 @@ import {
 	Input
 } from '../ui'
 
+import { useAuthStore } from '@/shared/store/auth.store'
+
 export const NewPassword = () => {
-	const [captchaToken, setCaptchaToken] = useState<string | null>('')
-
-	const [showPassword, setShowPassword] = React.useState<boolean>(false)
-	const [showRepeatPassword, setShowRepeatPassword] =
-		React.useState<boolean>(false)
-
 	const params = useParams<{ token: string }>()
 	const router = useRouter()
+
+	const {
+		showPassword,
+		setShowPassword,
+		showRepeatPassword,
+		setShowRepeatPassword,
+		captcha,
+		setCaptcha
+	} = useAuthStore()
 
 	const [newPassword, { loading }] = useMutation(NewPasswordDocument)
 
@@ -60,7 +64,7 @@ export const NewPassword = () => {
 				},
 				context: {
 					headers: {
-						'cf-turnstile-token': captchaToken
+						'cf-turnstile-token': captcha
 					}
 				}
 			})
@@ -188,10 +192,12 @@ export const NewPassword = () => {
 					<div className='flex justify-center pt-2'>
 						<Turnstile
 							siteKey={
-								process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!
+								process.env[
+									'NEXT_PUBLIC_TURNSTILE_SITE_KEY'
+								] as string
 							}
-							onSuccess={token => setCaptchaToken(token)}
-							onExpire={() => setCaptchaToken(null)}
+							onSuccess={token => setCaptcha(token)}
+							onExpire={() => setCaptcha('')}
 						/>
 					</div>
 

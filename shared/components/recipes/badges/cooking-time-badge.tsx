@@ -22,7 +22,7 @@ export const CookingTimeBadge: React.FC<Props> = ({
 				className
 			)}
 		>
-			<Clock />
+			<Clock className='text-accent' />
 			{cookingTime}мин
 		</Badge>
 	)

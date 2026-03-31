@@ -4,7 +4,7 @@ import type { GetBySlugRecipeQuery } from '@/graphql/generated/graphql'
 
 import { cn } from '@/shared/lib/utils'
 
-import { Card, CardContent } from '../ui/card'
+import { Card, CardContent } from '../../ui'
 
 import { AddToCartButton } from './add-to-cart-button'
 import { AddToFavoriteButton } from './add-to-favorite-button'
@@ -54,7 +54,7 @@ export const RecipeWithRecipeStep: React.FC<Props> = ({
 								)}
 							</div>
 						</div>
-						<div className='flex items-center justify-between gap-5'>
+						<div className='flex flex-wrap items-center justify-start gap-5 md:flex md:flex-nowrap md:justify-between md:space-y-0'>
 							{/* Badges */}
 							<RecipeBadgesBlock
 								calories={recipe.calories}

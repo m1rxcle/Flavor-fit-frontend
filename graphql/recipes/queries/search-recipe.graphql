@@ -1,13 +1,21 @@
 query SearchRecipe($searchTerm: String!) {
 	searchRecipes(searchTerm: $searchTerm) {
+		id
+		imageUrl
 		title
-		slug
-		tag {
-			name
-		}
 		description
-		recipeIngredients {
+		calories
+		cookingTime
+		difficulty
+		slug
+
+		likes {
+			userId
+		}
+
+		views {
 			id
+			userId
 		}
 	}
 }

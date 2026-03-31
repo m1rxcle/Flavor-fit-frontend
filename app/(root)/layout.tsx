@@ -17,7 +17,7 @@ export default function RootLayout({
 		<main className='bg-background min-h-screen'>
 			<Header />
 			<TopBar />
-			{children}
+			<div>{children}</div>
 		</main>
 	)
 }

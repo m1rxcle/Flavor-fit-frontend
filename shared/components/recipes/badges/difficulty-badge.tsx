@@ -34,7 +34,7 @@ export const DifficultyBadge: React.FC<Props> = ({ difficulty, className }) => {
 			className={cn(
 				`${
 					difficulty === Difficulty.Hard
-						? 'bg-orange-500/15 text-red-500'
+						? 'bg-red-400/15 text-red-500'
 						: difficulty === Difficulty.Medium
 							? 'bg-yellow-500/15 text-yellow-500'
 							: 'bg-green-500/15 text-green-500'

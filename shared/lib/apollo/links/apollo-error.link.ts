@@ -20,7 +20,7 @@ export const errorLink = new ErrorLink(({ error, operation, forward }) => {
 	if (!CombinedGraphQLErrors.is(error)) return
 
 	const isUnauthenticated = error.errors.some(
-		err => err.extensions?.code === 'UNAUTHENTICATED'
+		err => err.extensions?.['code'] === 'UNAUTHENTICATED'
 	)
 
 	if (!isUnauthenticated) return

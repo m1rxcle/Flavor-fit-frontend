@@ -37,7 +37,7 @@ export const Comment: React.FC<Props> = ({ comment, className }) => {
 	const ableToShowActions = isAuthor || isAdmin
 
 	return (
-		<Card className={cn('w-full md:w-70', className)}>
+		<Card className={cn('bg-background w-full md:w-70', className)}>
 			<CardContent>
 				<div className='flex flex-col gap-2'>
 					<div className='flex items-center justify-between gap-2'>
@@ -73,9 +73,15 @@ export const Comment: React.FC<Props> = ({ comment, className }) => {
 					</div>
 					<div className='flex flex-col gap-2'>
 						<span>{comment.content}</span>
-						<span className='text-muted-foreground text-xs'>
-							{convertDate(comment.createdAt)}
-						</span>
+						<div className='flex items-center gap-2'>
+							<span className='text-muted-foreground text-xs'>
+								{convertDate(comment.createdAt)}
+							</span>
+							<span className='text-muted-foreground text-xs font-bold'>
+								{comment.createdAt !== comment.updatedAt &&
+									'Изменено'}
+							</span>
+						</div>
 					</div>
 				</div>
 			</CardContent>

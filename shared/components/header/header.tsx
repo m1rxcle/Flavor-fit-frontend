@@ -1,4 +1,6 @@
-import { BellIcon, HeadsetIcon } from 'lucide-react'
+'use client'
+
+import { BellIcon } from 'lucide-react'
 
 import { cn } from '../../lib/utils'
 
@@ -29,9 +31,6 @@ export const Header: React.FC<Props> = ({ className }) => {
 			<div className='flex items-center justify-between gap-6'>
 				{/* notifications */}
 				<div className='flex items-center gap-2'>
-					<div className='bg-card hidden rounded-full p-3 md:block'>
-						<HeadsetIcon className='text-secondary-foreground' />
-					</div>
 					<div className='bg-card rounded-full p-3'>
 						<BellIcon className='text-secondary-foreground' />
 					</div>

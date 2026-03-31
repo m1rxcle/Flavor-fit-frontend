@@ -31,7 +31,7 @@ import {
 } from '../ui/form'
 import { Input } from '../ui/input'
 
-import { useCaptcha } from '@/shared/hooks/use-captcha'
+import { useCaptcha } from '@/shared/hooks'
 import { useAuthStore } from '@/shared/store/auth.store'
 
 export const LoginForm = () => {
@@ -77,7 +77,7 @@ export const LoginForm = () => {
 			})
 
 			if (result.error) {
-				toast.error('Произошла ошибка', { id: 'response-error' })
+				toast.error(result.error.message, { id: 'response-error' })
 				reset()
 				return
 			}
@@ -275,7 +275,11 @@ export const LoginForm = () => {
 				<div className='flex justify-center pt-2'>
 					<Turnstile
 						ref={ref}
-						siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+						siteKey={
+							process.env[
+								'NEXT_PUBLIC_TURNSTILE_SITE_KEY'
+							] as string
+						}
 						onSuccess={token => setCaptchaToken(token)}
 						onExpire={() => setCaptchaToken(null)}
 					/>

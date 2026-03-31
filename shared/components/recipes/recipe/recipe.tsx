@@ -4,10 +4,10 @@ import { useQuery } from '@apollo/client/react'
 
 import { GetBySlugRecipeDocument } from '@/graphql/generated/graphql'
 
-import { CommentsInRecipe } from '../comments/comments-in-recipe'
+import { CommentsInRecipe } from '../../comments/comments-in-recipe'
+import { RecipeSkeleton } from '../skeletons/recipe-skeleton'
 
 import { RecipeWithRecipeStep } from './recipe-with-recipe-step'
-import { RecipeSkeleton } from './skeletons/recipe-skeleton'
 
 interface Props {
 	slug: string

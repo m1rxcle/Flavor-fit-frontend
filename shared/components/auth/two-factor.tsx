@@ -46,7 +46,7 @@ export const TwoFactorOtp = () => {
 			setIsResendDisabled(false)
 		}, 60000)
 		return () => clearTimeout(minuteTimer)
-	}, [isResendDisabled])
+	}, [isResendDisabled, setIsResendDisabled])
 
 	useEffect(() => {
 		if (!isResendDisabled) return

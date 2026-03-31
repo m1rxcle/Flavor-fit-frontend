@@ -1,4 +1,4 @@
-import { Eye, Flame, Heart } from 'lucide-react'
+import { Eye } from 'lucide-react'
 import React from 'react'
 
 import { cn } from '@/shared/lib/utils'

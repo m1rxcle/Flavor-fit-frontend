@@ -10,7 +10,7 @@ import type { GetBySlugRecipeQuery } from '@/graphql/generated/graphql'
 
 import { cn } from '@/shared/lib/utils'
 
-import { Button } from '../ui'
+import { Button } from '../../ui'
 
 interface Props {
 	steps: GetBySlugRecipeQuery['getRecipeBySlug']['recipeStep']

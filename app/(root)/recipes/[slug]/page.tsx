@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { Recipe } from '@/shared/components/recipes/recipe'
+import { Recipe } from '@/shared/components/recipes/recipe/recipe'
 
 export const generateMetadata = async ({
 	params
@@ -12,7 +12,7 @@ export const generateMetadata = async ({
 
 	const prettySlug = decodedSlug
 		.split('-')
-		.map(word => word[0].toUpperCase() + word.slice(1))
+		.map(word => word[0]?.toUpperCase() + word.slice(1))
 		.join(' ')
 
 	return {

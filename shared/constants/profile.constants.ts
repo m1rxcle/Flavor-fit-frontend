@@ -1,4 +1,4 @@
-import { Book, BookAlert, History, Settings, User } from 'lucide-react'
+import { HeartPlus, History, LayersPlus, Settings, User } from 'lucide-react'
 
 export const PROFILE_MENU = [
 	{
@@ -10,7 +10,7 @@ export const PROFILE_MENU = [
 	{
 		title: 'Избранные рецепты',
 		href: '/profile/favorites',
-		icon: Book
+		icon: HeartPlus
 	},
 
 	{
@@ -22,7 +22,7 @@ export const PROFILE_MENU = [
 	{
 		title: 'Мои рецепты',
 		href: '/profile/my-recipes',
-		icon: BookAlert
+		icon: LayersPlus
 	},
 	{
 		title: 'Настройки',
